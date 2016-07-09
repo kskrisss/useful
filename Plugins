@@ -1,0 +1,1128 @@
+Enable the plugins you want by editing your ~/.zshrc file.
+
+Example:
+
+plugins=(rails git ruby)
+Completion plugins will let zsh know which arguments the package has so it can autocomplete. For instance, if you have the Homebrew plugin installed and type:
+
+brew in
+.. and then hit tab, the brew plugin will enable autocompletion to brew install. Completion plugins are not documented further on this page as they only provide better introspection for zsh into the original command. man is your friend.
+
+You should always read the source for the plugin before using it to avoid surprises. Plugins are located in ~/.oh-my-zsh/plugins.
+
+Below is a list of bundled plugins
+
+apache2-macports
+
+Maintainer: robbyrussell
+
+Enables aliases to control a local Apache2 installed via Macports.
+
+Command Description
+apache2start  Start Apache
+apache2stop Stop Apache
+apache2restart  Restart Apache
+archlinux
+
+Maintainer: Benjamin Boudreau
+
+Enabled aliases for pacman (replace pac by ya for yaourt)
+
+Alias Description
+pacin Install specific package(s) from the repositories
+pacins  Install specific package not from the repositories but from a file
+pacre Remove the specified package(s), retaining its configuration(s) and required dependencies
+pacrem  Remove the specified package(s), its configuration(s) and unneeded dependencies
+pacrep  Display information about a given package in the repositories
+pacreps Search for package(s) in the repositories
+pacloc  Display information about a given package in the local database
+paclocs Search for package(s) in the local database
+pacupd  Update and refresh the local package and ABS databases against repositories
+pacupg  Update the local database and upgrade packages
+pacinsd Install given package(s) as dependencies of another package
+pacmir  Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
+Function  Description
+paclist List all installed packages with a short description - Source
+paclsorphans  List all orphaned packages
+pacrmorphans  Delete all orphaned packages
+pacdisowned | less +F List all disowned files in your system
+asdf
+
+A plugin for the extendable version manager asdf. See the README for usage information.
+
+Maintainer: RobLoach
+
+autojump
+
+Enables autojump if installed with homebrew, macports or debian/ubuntu package.
+
+This does not add any commands on its own.
+
+autopep8
+
+Maintainer: Gaetan Semet
+
+Completion for the python file formatting (PEP8) tool
+
+aws
+
+Maintainer: Cristian Măgherușan-Stanciu
+
+Activates the ZSH completion plugin shipped together with the aws command-line tool
+
+Alias Description
+asp Choose the current AWS credentials profile from those defined in .aws/config, with auto-completion support. Also makes the currently set profile to be shown in the RPROMPT.
+agp Print the currently set AWS credentials profile.
+bower
+
+Maintainer: miklos-martin
+
+Bower is a package manager for the web. This plugin provides some aliases and completions for this great tool.
+
+Aliases
+
+Alias Description
+bi  installs a package (bower install)
+bl  lists installed packages (bower list)
+bs  searches for packages (bower search)
+Completion
+
+It completes the basic commands for bower. It uses the bower help command to achieve this, not a burned-in list of commands. It also provides completion for bower install, uses the output of bower search. It takes a few seconds for the first time (in the session), but then the output of bower search is cached, so things then speed up a lot.
+
+Example: to install jquery for example
+
+bi jq<TAB>
+brew
+
+Maintainer: robbyrussell
+
+Homebrew is an OS X package manager
+
+This plugin:
+
+creates a brews alias to list installed brews (= brew list -1)
+adds completion for the brew command.
+bundler
+
+Maintainer: robbyrussell
+
+Enables aliases to Bundler.
+
+Alias Description
+be  Bundle exec, execute a command in the context of the bundle
+bi  Bundle install
+bu  Bundle update
+Also creates shell aliases so you don't have to type "bundle exec" before most common ruby commands when you are in a directory with a Gemfile. Here is a list of commands it does this for: annotate cap capify cucumber ey foreman guard heroku middleman nanoc rackup rainbows rails rake rspec ruby shotgun spec spork thin thor unicorn unicorn_rails
+
+cabal
+
+Maintainer: telser
+
+cabal -- auto-completion for Cabal a build tool for Haskell.
+cake
+
+Maintainer: serby
+
+Commands for Cake, the coffee-script build tool.
+
+cake -- auto complete for cake tasks
+capistrano
+
+Maintainer: robbyrussell
+
+Commands for Capistrano, a deployment tool built in Ruby.
+
+cap -- a few commands for Capistrano, a deployment tool built in Ruby
+catimg
+
+Maintainer: posva
+
+Original repo: catimg.git
+
+Print pictures to the stdout using convert ImageMagick
+
+Example usage catimg image.png options:
+
+-h -- print help
+-w -- select output width
+-c -- change printed character (default " " without the quotes)
+celery
+
+Maintainer: dongweiming
+
+Commands for celery, a distributed task queue.
+
+Completion
+
+View worker have those parameter options
+
+celery worker<TAB>
+chruby
+
+Maintainer webframp
+
+Loads chruby, a simple ruby version manager, if installed, and provides chruby_prompt_info variable for theme use.
+
+Commands:
+
+rubies: list installed rubies or change current ruby
+You can manually specify the path to load chruby from using zstyle:
+
+zstyle :omz:plugins:chruby path
+zstyle :omz:plugins:chruby auto
+Simple build definition completion is also provided for ruby-build to make installed rubies from source faster.
+
+chucknorris
+
+Maintainers: apjanke maff
+
+Adds Chuck Norris fortune file from http://www.k-lug.org/~kessler/projects.html. Depends on fortune (and cowsay if using chuck_cow) being installed (available via homebrew, apt, ...). Perfectly suitable as MOTD.
+
+Command Description
+chuck print random Chuck Norris quote
+chuck_cow print quote in cowthink
+Example: output of chuck_cow command
+
+Last login: Fri Jan 30 23:12:26 on ttys001
+ ______________________________________
+( When Chuck Norris plays Monopoly, it )
+( affects the actual world economy.    )
+ --------------------------------------
+        o   ^__^
+         o  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+command-not-found
+
+Maintainer: robbyrussell
+
+Only for Ubuntu and openSUSE: If a command is not recognized in the $PATH, this will use Ubuntu's command-not-found package to find it or suggest spelling mistakes:
+
+~$ gedit
+The program 'gedit' is currently not installed. You can install it by typing:
+sudo apt-get install gedit
+bash: gedit: command not found
+The plugin uses the command-not-found package zsh support.
+
+Composer
+
+Maintainer: danielcsgomes
+
+Composer autocomplete plugin with useful aliases:
+
+Alias Command
+c composer
+csu composer self-update
+cu  composer update
+ci  composer install
+ccp composer create-project
+cget  (installs composer on the current path)
+cloudapp
+
+Maintainer: matthewmccullough
+
+Uploads files and piped contents to the Cloudapp service. Outputs and copies the resultant URL to the clipboard. Uses the cloudapp ruby gem from @holman.
+
+coffee
+
+Maintainer: jdavis
+
+Completion plugin for CoffeeScript.
+
+For available options, look at the usage or run the command coffee --help.
+
+common-aliases
+
+Maintainer: Gaetan Semet
+
+Collection of useful zsh aliases, not enabled by default since they may change some user defined aliases.
+
+Alias Command
+l ls -lFh
+la  ls -lAFh
+lr  ls -tRFh
+lt  ls -ltFh
+ll  ls -l
+ldot  ls -ld .*
+lS  ls -1FSsh
+lart  ls -1Fcart
+lrt ls -1Fcrt
+zshrc $EDITOR ~/.zshrc
+h history
+p (processes for current user)
+Alias to place at the end of command:
+
+Alias Command
+H | head
+T | tail
+G | grep
+L | less
+M | most
+LL  2>&1 | less
+CA  2>&1 | cat -A
+NE  2> /dev/null
+NUL > /dev/null 2>&1
+P 2>&1| pygmentize -l pytb
+Interactive mode for rm, cp, mv
+Completion for the python interpreter
+compleat
+
+Maintainer: robbyrussell
+
+Completion for human beings. Further documentation needed
+
+See this blog post about compleat
+
+cpanm
+
+Maintainer: robbyrussell
+
+Completion plugin for cpanminus
+
+debian
+
+Maintainer: robbyrussell
+
+A set of aliases to work with the Debian Advanced Packaging Tool, apt.
+
+Alias Description
+as [search term]  Search for packages
+ad  Update packages
+ai [packages to install]  Install package(s)
+ar [package to remove]  Remove package
+app Apt policy
+acs [search term] Search packages
+ac  Clean apt cache
+dircycle
+
+This is a small zle trick that lets you cycle your directory stack left or right using Ctrl+Shift+Left/Right. This is useful when moving back and forth between directories in development environments, and can be thought of as kind of a nondestructive pushd/popd.
+
+dirhistory
+
+Maintainer: [jeffwilliams][jeffwilliams]
+
+This plugin allows you to navigate the history of previous current-working-directories using ALT-LEFT and ALT-RIGHT. ALT-LEFT moves back to directories that the user has changed to in the past, and ALT-RIGHT undoes ALT-LEFT.
+
+For example, if the shell was started, and the following commands were entered:
+
+cd ~
+cd /usr
+cd share
+cd doc
+Then entering ALT-LEFT at the prompt would change directory from /usr/share/doc to /usr/share, then if pressed again to /usr/, then ~. If ALT-RIGHT were pressed the directory would be changed to /usr/ again.
+
+Currently the max history size is 100. The navigation should work for xterm, PuTTY xterm mode, and GNU screen.
+
+dirpersist
+
+Maintainer: robbyrussell
+
+dirpersist
+dnf
+
+Maintainer: robbyrussell
+
+Alias Command Description
+dnfl  dnf list  List packages
+dnfli dnf list installed  List installed packages
+dnfgl dnf grouplist List package groups
+dnfmc dnf makecache Generate metadata cache
+dnfp  dnf info  Show package information
+dnfs  dnf search  Search package
+Use sudo
+dnfu  sudo dnf upgrade  Upgrade package
+dnfi  sudo dnf install  Install package
+dnfgi sudo dnf groupinstall Install package group
+dnfr  sudo dnf remove Remove package
+dnfgr sudo dnf groupremove  Remove package group
+dnfc  sudo dnf clean all  Clean cache
+See the README for more information.
+
+docker
+
+Maintainer: Azaan
+
+Auto complete arguments and options for all docker commands.
+Show containerIDs and Images for tab completion where applicable (screenshots)
+encode64
+
+Maintainer: fuksito
+
+This is a plugin that helps to encode/decode strings with base64 from the console quickly:
+
+Command Description
+encode64  encode string
+decode64  decode string
+Example:
+
+$ encode64 some_string
+=> c29tZV9zdHJpbmc=
+
+$ decode64 c29tZV9zdHJpbmc=
+=> some_string
+fabric
+
+Maintainer: santiycr
+
+fabric - completion plugin for fabric
+fbterm
+
+fbterm - automatically start fbterm when running in /dev/tty*
+Forklift
+
+Maintainer: bitboxer
+
+Command Description
+fl [] Opens specified directory or current working directory in ForkLift.app
+fasd
+
+Maintainer: a-b
+
+fasd - command-line productivity booster, offers quick access to files and directories, inspired by autojump, z and v
+gas
+
+gas - completion plugin for the gas gem
+geeknote
+
+Maintainer: Ján Koščo
+
+See the README for more info.
+
+gem
+
+Maintainer: robbyrussell
+
+gem - completion plugin for the gem command
+gpg-agent
+
+Maintainer: robbyrussell
+
+Command Description
+gpg-agent starts gpg-agent (with ssh support) if not running and includes its environment variables
+git
+
+Maintainers: @Stibbons, @ncanceill
+
+Adds a lot of git aliases and functions for pulling for dealing with the current branch. See the dedicated Wiki page, or a list of some of the aliases introduced here (OUTDATED).
+
+gitfast
+
+Maintainer: felipec
+
+Enables the zsh completion from git.git folks, which is much faster than the official one from zsh. A lot of zsh-specific features are not supported, like descriptions for every argument, but everything the bash completion has, this one does too (as it is using it behind the scenes). Not only is it faster, it should be more robust, and updated regularly to the latest git upstream version.
+
+git-extras
+
+Maintainer: agrimaldi
+
+git-extras - Support for git-extras completion
+
+Pressing tab after the various commands should autofill authors, branches and tags depending on context.
+
+Command Description
+git changelog [-l/--list] populate changelog file with commits since the previous tag
+git contrib display author contributions
+git count [--all] count commits
+git delete-branch delete local and remote branch
+git delete-submodule  delete submodule
+git delete-tag  delete local and remote tag
+git extras [-v/--version] git-extras
+git graft merge commits from source branch to destination branch
+git squash  merge commits from source branch into the current one as a single commit
+git feature [finish]  create a feature branch
+git refactor [finish] create a refactor branch
+git bug [finish]  create a bug branch
+git summary repository summary
+git effort [--above]  display effort statistics
+git repl  read-eval-print-loop
+git commits-since list commits since a given date
+git release release commit with the given tag
+git alias define, search and show aliases
+git ignore  add patterns to .gitignore
+git info  show info about the repository
+git create-branch create local and remote branch
+git fresh-branch  create empty local branch
+git undo  remove the latest commit
+git setup setup a git repository
+git touch one step creation of new files
+git obliterate  Completely remove a file from the repository, including past commits and tags
+git local-commits list unpushed commits on the local branch
+git-flow
+
+Maintainer: robbyrussell
+
+git-flow - Support for git-flow completion
+git-flow-avh
+
+Maintainer:
+
+git-flow-avh - Support for git-flow-avh completion
+git-hubflow
+
+Maintainer: wweaver
+
+git-hubflow - Support for git HubFlow completion
+git_remote_branch
+
+Maintainer: webmat
+
+git_remote_branch - Support for grb completion
+Commands
+grb create branch_name [origin_server]
+grb publish branch_name [origin_server]
+grb delete branch_name [origin_server]
+grb track branch_name [origin_server]
+grb rename new_branch_name [origin_server]
+grb explain create
+github
+
+Maintainer: robbyrussell
+
+github - adds autocomplete to the github gem, which is installable via gem install github
+gradle
+
+Maintainer: matthewmccullough
+
+Adds autocompletion of task names and option switches to command line use of gradle by actually executing gradle tasks in the background and collecting the result.
+
+Caches the result of the task names in a .gradletasknamecache file that is regenerated if the timestamp of the build.gradle file changes.
+
+grails
+
+Maintainer: zachriggle
+
+Adds tab-completion of Grails script names to the command line use of grails. Looks for scripts in the following paths:
+
+$GRAILS_HOME/scripts
+~/.grails/scripts
+./scripts
+./plugins/*/scripts
+httpie
+
+Maintainer: lululau
+
+Adds completion for HTTPie, which is a command line HTTP client, a user-friendly cURL replacement.
+
+history
+
+Maintainer: r-darwish
+
+Provides a couple of convenient aliases for using the history command to examine your command line history.
+
+Alias Description
+h List your command history. Equivalent to using history
+hsi When called without an argument you will get help on grep arguments
+hsi [search text] Performs a case insensitive grep search on your command history, looking for commands that match the argument provided
+jira
+
+Maintainer: tresni
+
+Open Jira issues using the command open_jira_issue
+Examples:
+
+Open new issue form in browser
+
+jira
+Open issue in browser
+
+jira ABC-123
+If you use Rapid Board make sure to add the following to your .zshrc:
+
+JIRA_RAPID_BOARD="true"
+jsontools
+
+Maintainer: bobwilliams
+
+handy command line tools for dealing with json data.
+
+Command Description
+pp_json pretty prints json
+is_json returns true if valid json; false otherwise
+urlencode_json  returns a url encoded string for the given json
+urldecode_json  returns decoded json for the given url encoded string
+knife
+
+Maintainer: franklouwers
+
+knife - adds autocompletion to knife
+laravel4
+
+Maintainer: m0nah
+
+Laravel 4 autocomplete plugin!
+
+Alias Description
+la4 php artisan
+la4dump php artisan dump-autoload
+la4cache  php artisan cache:clear
+la4routes php artisan routes
+last-working-dir
+
+Maintainer: op
+
+Keeps track of the last used directory and automatically jumps to it for new shells. Similar to how many terminal emulators does it.
+
+Command Description
+lwd Jump to last working directory (automatically called for new shells)
+lein
+
+Maintainer: robbyrussell
+
+lein - auto-completion for leiningen, build tool for clojure
+lighthouse
+
+Maintainer: robbyrussell
+
+lighthouse - open lighthouse tickets using the command open_lighthouse_ticket (see http://screencast.com/t/ZDgwNDUwNT)
+lol
+
+Maintainer: robbyrussell
+
+lol - brings lulz to your zsh (based on lolbash)
+macports
+
+Maintainer: robbyrussell
+
+macports - adds "port" command completion and aliases for running macports commands
+mercurial
+
+Maintainers: ptrv, oshybystyi
+
+Alias Description
+hgc hg commit
+hgb hg branch
+hgba  hg branches
+hgco  hg checkout
+hgd hg diff
+hged  hg diffmerge
+hgl hg pull -u
+hgp hg push
+hgs hg status
+hgca  hg qimport -r tip ; hg qrefresh -e ; hg qfinish tip
+Plus it adds mercurial repo info into zsh prompt.
+
+See detailed instructions in plugin README
+
+meteor
+
+Maintainer: jorge-d
+
+This plugin adds completion for the meteor command
+
+Examples:
+
+$ meteor [tab]
+$ cd some_random_meteor_project
+$ meteor add [tab] # Will list all the available packages
+$ meteor remove [tab] # Will all the installed packages
+mvn
+
+Maintainer: fred-o
+
+mvn - adds command line completion for apache maven
+mysql-macports
+
+Maintainer: robbyrussell
+
+mysql - aliases for starting stopping and getting mysql status ( mysqlstart, mysqlstop, mysqlstatus)
+nanoc
+
+Maintainer: josh-
+
+Enhances the Nanoc static site generator with aliases and ZSH autocompletion. Discussed in further detail in this blog post.
+
+Alias Description
+n is an alias to nanoc, other commands may be appended to this or on its own it will compile a site.
+na  starts the autocompiler.
+nco compiles a site.
+nci creates an item .
+ncl creates a layout .
+ncs creates a site .
+nd  deploys a site.
+nv  starts the adsf server for the current site.
+nw  starts the watcher.
+node
+
+Command Description
+node-docs [SECTION] open the node api, for your current version, in your browser.
+npm
+
+Maintainer: robbyrussell
+
+npm - adds autocompletion to npm
+nyan
+
+Maintainer: robbyrussell
+
+nyan - nyan cat goodness in your shell
+osx
+
+Command Description
+tab Open the current directory in a new tab
+ofd Open the current directory in a Finder window
+pfd Return the path of the frontmost Finder window
+pfs Return the current Finder selection
+cdf cd to the current Finder directory
+pushdf  pushd to the current Finder directory
+quick-look  Quick-Look a specified file
+man-preview Open a specified man page in Preview app
+See the README for more information.
+
+Maintainer: robbyrussell
+
+pass
+
+Maintainer: sanbor
+
+Completion plugin for pass. Source
+
+per-directory-history
+
+Maintainer: jimhester
+
+per-directory-history - tracks previous command history both per current directory and globally, with the ability to switch between them on the fly, bound to ctrl-g.
+
+perl
+
+Maintainer: robbyrussell
+
+perl - useful shortcuts for perlbrew, perldoc, and perl one-liners
+pep8
+
+Maintainer: Gaetan Semet
+
+Completion for the pep8 python coding style (PEP8) check tool
+
+phing
+
+Maintainer: robbyrussell
+
+phing - auto complete for phing targets.
+pip
+
+Maintainer: robbyrussell
+
+pip - completion plugin for the pip command
+pod
+
+Maintainer: mekanics
+
+Completion plugin for CocoaPods
+You can find the official documentation here
+pow
+
+Command Description
+kapow helper function to touch tmp/restart.txt, restarting an application in pow.
+powify
+
+A simple powify autocomplete plugin. It includes all commands, subcomands, and rack app name autocompletion where needed.
+
+pyenv
+
+Maintainer: ssm
+
+Completion for the pyenv command, which maintains local python installations.
+Exports a "pyenv_prompt_info()" function for your custom prompt.
+pylint
+
+Maintainer: Gaetan Semet
+
+Completion for the python file coding style check tool
+
+python
+
+Maintainer: Gaetan Semet
+
+Completion for the python interpreter
+
+rails
+
+Maintainer: robbyrussell
+
+rails aliases:
+
+Alias Command
+rc  rails console
+rd  rails destroy
+rdb rails dbconsole
+rg  rails generate
+rgm rails generate migration
+rp  rails plugin
+ru  rails runner
+rs  rails server
+rsd rails server --debugger
+rake aliases:
+
+Alias Command
+rdm rake db:migrate
+rdms  rake db:migrate:status
+rdr rake db:rollback
+rdc rake db:create
+rds rake db:seed
+rdd rake db:drop
+rdtc  rake db:test:clone
+rdtp  rake db:test:prepare
+rdmtc rake db:migrate db:test:clone
+rlc rake log:clear
+rn  rake notes
+rr  rake routes
+rand-quote
+
+Maintainer: posva
+
+Creates a function quote to display a colored random quote picked from this site
+
+redis-cli
+
+Maintainer: robbyrussell
+
+Completion plugin for redis-cli
+
+repo
+
+Maintainer: Gaetan Semet
+
+Completion plugin for git-repo
+Alias Command
+rs  repo sync
+rra repo rebase --auto-stash
+rsrra repo sync and repo rebase
+ruby
+
+Maintainer: robbyrussell
+
+Alias Command
+rfind find . -name "*.rb" | xargs grep -n
+sgem  sudo gem
+rvm
+
+Command Description
+rb18 [GEMSET] shortcut for rvm use ruby-1.8.7-p334@GEMSET (with gemset completion)
+rb19 [GEMSET] shortcut for rvm use ruby-1.9.2-p180@GEMSET (with gemset completion)
+rubies  list installed rubies
+gemsets list gemsets for currently active ruby
+gems  list gems available in currently active gemset Note: This has opinions about colors. It should be re-factored to be customizable in themes.
+After rvm-update (alias for rvm get head; rvm reload), run rvm-link-completion to make a symlink to the official zsh completion file that comes with rvm into your oh-my-zsh rvm plugin directory.
+
+sbt
+
+Maintainer: mcaserta
+
+sbt - completion plugin for SBT
+Alias Command
+sbc sbt compile
+sbco  sbt console
+sbcq  sbt console-quick
+sbcl  sbt clean
+sbcp  sbt console-project
+sbd sbt doc
+sbdc  sbt dist:clean
+sbdi  sbt dist
+sbgi  sbt gen-idea
+sbp sbt publish
+sbpl  sbt publish-local
+sbr sbt run
+sbrm  sbt run-main
+sbu sbt update
+sbx sbt test
+scala
+
+Maintainer: mcaserta
+
+scala - completion plugin for scala and scalac
+screen
+
+Maintainer: fred-o
+
+screen - automatic setting of window titles and status for GNU Screen
+sprunge
+
+Maintainer: ilikenwf
+
+sprunge - a basic cli interface to pastebin, which accepts it's input through web requests. Designed for Linux users, sprunge is an easy way to pastebin text without having to actually use a web browser. The oh-my-zsh plugin is based on http://www.shellperson.net/sprunge-pastebin-script/, author unknown.
+You can use sprunge in the following ways:
+
+Examples:
+
+Pipes:
+
+echo "hello there...testing sprunge"|sprunge
+Files:
+
+sprunge test.txt
+Strings:
+
+sprunge "hello"
+Note that if a filename is misspelled or doesn't have the necessary path description, it will NOT generate an error, but will instead treat it as a text string and upload it.
+
+ssh-agent
+
+Maintainer: robbyrussell
+
+ssh-agent - cygwin ssh-agent plugin for starting agent (see - http://www.cygwin.com/ml/cygwin/2001-06/msg00537.html )
+sublime
+
+Maintainer: dylnhdsn
+
+Command Description
+st  open a specified file in Sublime Text
+stt open the current directory in Sublime Text
+sudo
+
+Maintainer: dongweiming
+
+ESC twice: Puts sudo in front of the current command, or the last one if the command line is empty.
+supervisor
+
+Maintainer: everbird
+
+supervisor - Adds tab-completion for supervisord/supervisorctl in Supervisor. These scripts are from zshcompfunc4supervisor.
+suse
+
+Maintainer: r-darwish
+
+Alias Command
+zi  sudo zypper install
+zrf sudo zypper refresh
+zs  zypper search
+zup sudo zypper dist-upgrade
+zrm sudo zypper remove
+zp  sudo zypper patch
+zps sudo zypper ps
+svn
+
+Maintainer: robbyrussell
+
+svn - adds several functions for dealing with the status of the current directory's svn repo.
+svn-fast-info
+
+svn-fast-info - is a faster drop-in replacement of the svn plugin, it brings the same level of functionality using the same API. The speed improvements are especially visible on big SVN repository.
+symfony2
+
+Maintainer: andrewtch
+
+Symfony2 autocomplete plugin; binds to app/console, and not ./console command!
+
+Alias Command
+sf  php app/console
+sfcl  php app/console cache:clear
+sfroute php app/console router:debug
+sfgb  php app/console generate:bundle
+systemd
+
+Maintainer: aelesbao
+
+systemd aliases plugin; Add sc-[command] aliases to all systemctl commands, using sudo when needed.
+taskwarrior
+
+Maintainer: lepht
+
+taskwarrior - adds smart tab completion for TaskWarrior. For example, task[tabtab] will give you a list of current tasks, task 66[tabtab] gives a list of available modifications for that task, etc.
+terminalapp
+
+Maintainer: OutPunk
+
+terminalapp - automatically sets the Terminal.app resume directory, so when restoring windows with OS X Lion's "Resume" feature it will restore the directory too.
+terminitor
+
+Maintainer: philippbosch
+
+terminitor is a tool that "automates your development workflow setup".
+
+terminitor – auto complete for terminitor commands and scripts
+textmate
+
+Maintainer: robbyrussell
+
+Alias Command
+et  mate .
+ett mate Gemfile app config features lib db public spec test Rakefile Capfile Todo
+etp mate app config lib db public spec test vendor/plugins vendor/gems Rakefile Capfile Todo
+etts  mate app config lib db public script spec test vendor/plugins vendor/gems Rakefile Capfile Todo
+mr  mate CHANGELOG app config db lib public script spec test
+tm [directory]  changes to specified directory and executes mate .
+thor
+
+Completions for thor
+
+tmux
+
+Maintainer: jmatth
+
+Adds several options for effecting the startup behavior of tmux. Each of the options are set by changing the environment variables below:
+
+ZSH_TMUX_AUTOSTART: Automatically start a tmux session upon logging in. Set to false by default.
+ZSH_TMUX_AUTOSTART_ONCE: Only attempt to autostart tmux once. If this is disabled when the previous option is enabled, then tmux will be autostarted every time you source your zsh config files. Set to true by default.
+ZSH_TMUX_AUTOCONNECT: When running tmux automatically connect to the currently running tmux session if it exits, otherwise start a new session. Set to true by default.
+ZSH_TMUX_AUTOQUIT: Close the terminal session when tmux exits. Set to the value of ZSH_TMUX_AUTOSTART by default.
+ZSH_TMUX_FIXTERM: When running tmux, the variable $TERM is supposed to be set to screen or one of its derivatives. This option will set the default-terminal option of tmux to screen-256color if 256 color terminal support is detected, and screen otherwise. The term values it uses can be overridden by changing the ZSH_TMUX_FIXTERM_WITH_256COLOR and ZSH_TMUX_FIXTERM_WITHOUT_256COLOR variables respectively. Set to true by default.
+If the user specifies any arguments for tmux then the command is just executed as it was typed it without any modification.
+
+tmuxinator
+
+Completions for tmuxinator. To enable completions for mux, a shortcut for tmuxinator, add following alias in your zshrc to overwrite the executable:
+
+Alias Command
+mux tmuxinator
+tugboat
+
+Maintainer: DimitriSteyaert
+
+tugboat - autocompletion for Tugboat commands, the CLI tool to manage your Digital Ocean configuration and droplets.
+urltools
+
+Adds command line utilities for URL manipulation.
+
+Command Description
+urlencode encodes a string so it compiles with the URL character rules laid out in RFC 1738
+urldecode decode a string encoded according to the URL character rules in RFC 1738
+vagrant
+
+Maintainer: robbyrussell
+
+vagrant - autocompletion for Vagrant commands, task names, box names and built-in handy documentation. All in one place.
+vi-mode
+
+Maintainer: robbyrussell
+
+** Read the plugin README file **
+
+Increase zsh vi-like functionality
+virtualenvwrapper
+
+Maintainer: mispy
+
+virtualenvwrapper - Loads Python's virtualenvwrapper shell tools, and automatically activates virtualenv on cd into git repository with matching name.
+web-search
+
+Maintainer: xuhdev
+
+Adds several commands to do web search.
+
+Commands
+bing
+google
+yahoo
+duckduckgo
+Examples:
+
+Search for oh-my-zsh on Google:
+
+google oh-my-zsh
+Search for "What is GitHub" on Bing:
+
+bing what is github
+Search for "foo bar" on DuckDuckGo:
+
+ddg foo bar
+yii
+
+Maintainer: IgorTimoshenko
+
+Yii autocompletion plugin.
+
+Alias Command
+yiic  protected/yiic
+yii2
+
+Maintainer: ekaragodin
+
+Yii2 autocompletion plugin.
+
+yum
+
+Maintainer: robbyrussell
+
+Enables aliases for Yum, the popular front-end to the RPM Package Manager.
+
+Alias Command Description
+ys  yum search  Search package
+yp  yum info  Show package info
+yl  yum list  List packages
+ygl yum grouplist List package groups
+yli yum list installed  Print all installed packages
+ymc yum makecache Rebuilds the yum package list
+yu  sudo yum update pgrade packages
+yi  sudo yum install  Install package
+ygi sudo yum groupinstall Install package group
+yr  sudo yum remove Remove package
+ygr sudo yum groupremove  Remove pagage group
+yrl sudo yum remove --remove-leaves Remove package and leaves
+yc  sudo yum clean all  Clean cache
+zeus
+
+Homepage: Zeus project
+
+Aliases
+
+Maintainer: Bamboo
+
+Alias Command
+zi  zeus init
+zinit zeus init
+zs  zeus start
+ztart zeus start
+zc  zeus console
+zonsole zeus console
+zsr zeus server
+zerver  zeus server
+zr  zeus rake
+zake  zeus rake
+zg  zeus generate
+zenerate  zeus generate
+zrn zeus runner
+zunner  zeus runner
+zcu zeus cucumber
+zucumber  zeus cucumber
+zt  zeus test
+zest  zeus test
+zu  zeus test test/unit/*
+zunits  zeus test test/unit/*
+zf  zeus test test/functional/*
+zunctional  zeus test test/functional/*
+za  zeus test test/unit/*; zeus test test/functional/; zeus cucumber
+zall  zeus test test/unit/*; zeus test test/functional/; zeus cucumber
+zsw rm .zeus.sock
+zweep rm .zeus.sock
+Completion
+
+Maintainer: johnjohndoe
+
+Completion plugin for zeus. The describing texts are inspired by the texts given in the documenation of Rails command line tools.*Source
+
+wd
+
+Maintainer: mfaerevaag
+
+wd (warp directory) lets you jump to custom directories in zsh, without using cd. Why? Because cd seems inefficient when the folder is frequently visited or has a long path. Source
+
+Print usage with no opts or the help argument.
+
+Examples:
+
+Add warp point to current working directory:
+
+wd add test
+If a warp point with the same name exists, use add! to overwrite it.
+
+Examples:
+
+From an other directory, warp to test with:
+
+wd test
+You can warp back to previous directory, and so on, with the puncticulation syntax:
+
+wd ..
+wd ...
+This is a wrapper for the zsh dirs function.
+
+Remove warp point test point:
+
+wd rm test
+List warp points to current directory (stored in ~/.warprc):
+
+wd show
+List all warp points (stored in ~/.warprc):
+
+wd list
